@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "MyMoxy",
+    "description": "Mymoxy events.",
+    "slug": "mymoxy",
+    "privacy": "unlisted",
+    "sdkVersion": "31.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "0.1.4",
+    "orientation": "portrait",
+    "icon": "./src/assets/icons/logo.png",
+    "splash": {
+      "image": "./src/assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.mymoxy.client",
+      "supportsTablet": false
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "matheus-rezende",
+            "project": "mymoxy-gl",
+            "authToken": "d5cd4c68565142a4b9f259fbca49827e59f226dba8c14b8fa1fe3dce73bbe469"
+          }
+        }
+      ]
+    },
+    "githubUrl": "https://github.com/matheusrezende/mymoxy-new/tree/develop"
+  }
+}
