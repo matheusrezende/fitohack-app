@@ -22,7 +22,7 @@ export default compose(
   }),
 
   withHandlers({
-    onActionCall: ({navigation}) => () => {
+    onAction: ({navigation}) => () => {
       navigation.navigate('NewEvent')
     },
     onRefresh: ({

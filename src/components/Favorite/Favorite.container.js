@@ -31,7 +31,7 @@ export default compose(
   }),
   saveToCalendarHoc,
   withHandlers({
-    onActionCall: ({
+    onAction: ({
       eventId, favoriteEvent, setLoadingStatus, askUserForSaving, isFavorite, deleteFromCalendar,
     }) => async () => {
       setLoadingStatus(true)

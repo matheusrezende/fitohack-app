@@ -1,5 +1,6 @@
 import {bindActionCreators} from 'redux';
 import {compose, lifecycle} from 'recompose';
+import {AsyncStorage} from 'react-native';
 import {connect} from 'react-redux';
 
 import {getLocation} from './actions/location';
@@ -19,6 +20,7 @@ export default compose(
   lifecycle({
     componentDidMount() {
       this.props.getCurrentPosition()
+      AsyncStorage.clear()
     },
   }),
 )(RootNavigator)

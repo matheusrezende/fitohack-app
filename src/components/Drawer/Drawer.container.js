@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withHandlers({
-    onActionCall: ({navigation}) => (route) => navigation.navigate(route),
+    onAction: ({navigation}) => (route) => navigation.navigate(route),
     navigate: ({navigation}) => (route) => () => navigation.navigate(route),
     logout: ({navigation, dispatch}) => () => clearAuthInfo(navigation, dispatch),
   }),
