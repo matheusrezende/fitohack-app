@@ -1,16 +1,21 @@
-import {View, ImageBackground} from 'react-native'
+import {View} from 'react-native'
 import React from 'react'
 
-import BackgroundImage from '../../assets/images/background.jpg'
 import Colors from '../../constants/Colors';
 import DrawerRow from '../DrawerRow/DrawerRow.component';
 import Layout from '../../constants/Layout';
 import Typography from '../Typography/Typography';
 import appJSON from '../../../app.json'
+import {LinearGradient} from 'expo-linear-gradient';
 
 const Drawer = ({navigate, logout, onAction}) => (
   <View style={styles.container}>
-    <ImageBackground source={BackgroundImage} style={styles.image} blurRadius={100} resizeMode='cover'>
+    <LinearGradient
+      colors={Colors.gradient}
+      start={[0.5, 0]}
+      end={[0.5, 1]}
+      style={styles.gradient}
+    >
       <View style={styles.contentContainer}>
         <View style={styles.itemsColumn}>
           <DrawerRow active label='Home' icon='home' onPress={navigate('Home')} />
@@ -27,7 +32,7 @@ const Drawer = ({navigate, logout, onAction}) => (
           </View>
         </View>
       </View>
-    </ImageBackground>
+    </LinearGradient>
   </View>
 )
 
@@ -50,5 +55,8 @@ const styles = {
   container: {
     flex: 1, backgroundColor: Colors.background,
   },
+  gradient: {
+    height: '100%',
+  }
 }
 export default Drawer
