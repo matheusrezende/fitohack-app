@@ -12,7 +12,6 @@ import {favoriteEvent as favoriteEventAction} from '../../actions/event';
 import {isEventFavoriteSelector} from '../../reducers/user/favorites';
 import Favorite from './Favorite.component'
 import saveToCalendarHoc from '../../hocs/saveToCalendarHoc';
-import withActiveCheck from '../../hocs/withActiveCheck';
 
 const mapStateToProps = (state, {eventId}) => ({
   isFavorite: isEventFavoriteSelector(state)(eventId),
@@ -46,5 +45,4 @@ export default compose(
       setLoadingStatus(false)
     },
   }),
-  withActiveCheck,
 )(Favorite)

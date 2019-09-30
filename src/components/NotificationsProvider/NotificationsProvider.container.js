@@ -1,6 +1,6 @@
 import {Notifications} from 'expo';
 
-import  * as Permissions from 'expo-permissions';
+import * as Permissions from 'expo-permissions';
 import React, {PureComponent} from 'react';
 
 const getiOSNotificationPermission = async () => {

@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import {clearAuthInfo} from '../../helpers/authHelper';
 import {profileSelector} from '../../reducers/user/profile';
 import Drawer from './Drawer.component'
-import withActiveCheck from '../../hocs/withActiveCheck';
 
 
 const mapStateToProps = (state) => ({
@@ -22,5 +21,4 @@ export default compose(
     navigate: ({navigation}) => (route) => () => navigation.navigate(route),
     logout: ({navigation, dispatch}) => () => clearAuthInfo(navigation, dispatch),
   }),
-  withActiveCheck,
 )(Drawer)

@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import {getAllNearEvents, getAllUpcomingEvents} from '../../actions/event';
 import {locationSelector} from '../../reducers/location';
 import HomeComponent from './Home.component';
-import withActiveCheck from '../../hocs/withActiveCheck';
 
 const mapStateToProps = (state) => ({
   location: locationSelector(state),
@@ -38,5 +37,4 @@ export default compose(
     },
 
   }),
-  withActiveCheck,
 )(HomeComponent)

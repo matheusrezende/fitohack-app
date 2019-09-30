@@ -17,7 +17,7 @@ const Drawer = ({navigate, logout, onAction}) => (
           <DrawerRow label='Map' icon='drawerMap' onPress={navigate('Map')} />
           <DrawerRow label='Favorites' icon='heartWhite' onPress={() => onAction('Favorites')} />
           <DrawerRow label='My Events' icon='calendarWhiteDrawer' onPress={() => onAction('MyEvents')} />
-          <DrawerRow label='Profile' icon='profile' onPress={() => onAction('Profile')} />
+          <DrawerRow label='Profile' icon='profile' onPress={navigate('Profile')} />
         </View>
         <View style={styles.itemsColumn}>
           <DrawerRow label='Einstellungen' icon='info' onPress={navigate('Info')} />
