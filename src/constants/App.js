@@ -8,7 +8,7 @@
 let API_URL //eslint-disable-line
 
 if (__DEV__) {
-  API_URL = 'http:localhost:3000/api'
+  API_URL = 'https://fitohack.herokuapp.com/api'
 } else {
   API_URL = 'https://fitohack.herokuapp.com/api'
 }
