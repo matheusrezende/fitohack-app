@@ -6,7 +6,7 @@
  */
 import React from 'react'
 import {View, StatusBar, Platform} from 'react-native'
-import {MapView} from 'react-native-maps';
+import MapView from 'react-native-maps';
 import Icon from '../../components/ImageIcon/ImageIcon';
 import EventCard from '../../components/EventCard/EventCard.container';
 import Layout from '../../constants/Layout';
