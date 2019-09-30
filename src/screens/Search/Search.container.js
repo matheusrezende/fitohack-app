@@ -1,4 +1,4 @@
-import {Location} from 'expo'
+import * as Location from 'expo-location'
 import {bindActionCreators} from 'redux';
 import {change, formValueSelector, reset, clearFields} from 'redux-form';
 import {compose, withHandlers} from 'recompose'

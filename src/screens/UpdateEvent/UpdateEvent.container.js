@@ -9,7 +9,7 @@ import _ from 'lodash'
 import {formValueSelector, change as changeAction, SubmissionError, clearFields} from 'redux-form'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
-import {Location} from 'expo'
+import * as Location from 'expo-location'
 import NewEventComponent from '../NewEvent/NewEvent.component';
 import {eventFormatForUpdate} from '../../reducers/event/detail';
 import {categoryArraySelector} from '../../reducers/category';

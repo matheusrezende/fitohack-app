@@ -4,7 +4,7 @@
  * @Last Modified by: @matheusrezende
  * @Last Modified time: 2018-08-17 10:02:41
  */
-import {MapView} from 'expo';
+import {MapView} from 'react-native-maps';
 import {View, Platform, StatusBar} from 'react-native'
 import React from 'react'
 import Slider from 'react-native-slider'

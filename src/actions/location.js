@@ -4,8 +4,8 @@
  * @Last Modified by: @matheusrezende
  * @Last Modified time: 2018-08-03 14:26:44
  */
-import {Location} from 'expo';
-import {Permissions} from 'expo-permissions';
+import * as Location from 'expo-location';
+import * as Permissions from 'expo-permissions';
 import {createAction} from '../helpers/actionHelper';
 import {GET_LOCATION, LOADING, FAILURE, SUCCESS} from '../constants/Actions';
 

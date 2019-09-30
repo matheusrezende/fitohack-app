@@ -4,7 +4,7 @@
  * @Last Modified by: matheus.rezende
  * @Last Modified time: 2018-11-08 08:53:50
  */
-import {Location} from 'expo'
+import * as Location from 'expo-location'
 import {Platform} from 'react-native'
 import {bindActionCreators} from 'redux';
 import {compose, lifecycle, withHandlers, withStateHandlers} from 'recompose';

@@ -6,8 +6,8 @@
  */
 import {compose, withHandlers} from 'recompose';
 import {connectActionSheet} from '@expo/react-native-action-sheet';
-import {ImagePicker} from 'expo'
-import {Permissions} from 'expo-permissions';
+import * as ImagePicker from 'expo-image-picker'
+import * as Permissions from 'expo-permissions';
 import ImagePickerComponent from './ImagePicker.component';
 
 

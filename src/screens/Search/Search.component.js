@@ -5,7 +5,7 @@
  * @Last Modified time: 2018-08-16 17:51:01
  */
 import {Field, reduxForm, change} from 'redux-form'
-import {Location} from 'expo'
+import * as Location from 'expo-location'
 import {View} from 'react-native'
 import React from 'react'
 

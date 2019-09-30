@@ -8,8 +8,8 @@ import {compose, withHandlers} from 'recompose';
 import {connect} from 'react-redux'
 import {connectActionSheet} from '@expo/react-native-action-sheet';
 import {bindActionCreators} from 'redux';
-import {ImagePicker} from 'expo'
-import {Permissions} from 'expo-permissions';
+import * as ImagePicker from 'expo-image-picker'
+import * as Permissions from 'expo-permissions';
 import CameraButton from './CameraButton.component';
 import {updateProfilePicture} from '../../../actions/user';
 import {profileSelector} from '../../../reducers/user/profile';

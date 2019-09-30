@@ -1,6 +1,6 @@
 import {ActionSheetProvider} from '@expo/react-native-action-sheet'
 import {AppLoading} from 'expo';
-import {Font} from 'expo-font';
+import * as Font from 'expo-font';
 import {Asset} from 'expo-asset';
 
 import {PersistGate} from 'redux-persist/integration/react'

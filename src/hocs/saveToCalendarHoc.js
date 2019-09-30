@@ -6,8 +6,8 @@
  */
 import {compose, withHandlers} from 'recompose'
 import {Alert} from 'react-native'
-import {Calendar} from 'expo'
-import {Permissions} from 'expo-permissions';
+import * as Calendar from 'expo-calendar'
+import * as Permissions from 'expo-permissions';
 import {getFromStorage, saveToStorage} from '../helpers/storageHelper';
 import {CALENDAR, CALENDAR_EVENT} from '../constants/StorageKeys';
 
