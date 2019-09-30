@@ -40,7 +40,12 @@ const TextInput = ({
 }) => (
   <TouchableWithoutFeedback onPress={onPress}>
     <View style={styles.margin}>
-      <Typography variant='body' color={submitFailed && error ? 'error' : 'black'}>{label}</Typography>
+      <Typography
+        variant='label'
+        color={submitFailed && error ? 'error' : 'white'}
+      >
+        {label}
+      </Typography>
       <View style={styles.container} >
         <Input
           {...inputProps}

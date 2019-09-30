@@ -17,4 +17,5 @@ export default {
   gradient: ['#C15BE4', '#9542E8'],
   darkGradient: ['black', 'transparent'],
   whiteBackground: '#ffffff',
+  textColor: '#fff',
 };

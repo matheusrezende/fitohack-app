@@ -2,6 +2,7 @@ import React from 'react'
 import {Text} from 'react-native'
 import Colors from '../../constants/Colors';
 import {normalize} from '../../helpers/normalize';
+import Layout from '../../constants/Layout';
 
 const Typography = ({
   variant, color, children, numberOfLines, textAlign, ...props
@@ -53,6 +54,11 @@ const styles = {
   date: {
     fontFamily: 'helvetica-regular',
     fontSize: normalize(32),
+  },
+  label: {
+    fontFamily: 'helvetica-bold',
+    fontSize: normalize(16),
+    marginBottom: Layout.spacing * 2,
   },
   link: {
     fontFamily: 'helvetica-bold',
