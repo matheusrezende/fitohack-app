@@ -6,12 +6,12 @@ import Colors from '../../../constants/Colors';
 import {validateEmail, required} from '../../../helpers/validators';
 import Layout from '../../../constants/Layout';
 import Icon from '../../../components/ImageIcon/ImageIcon';
-import {Button as MyButton} from '../../../components';
+import {Button} from '../../../components';
 import Spinner from '../../../components/Spinner/Spinner';
 
 
 const LoginComponent = ({
-  handleSubmit, goToSignup, loading, keyboardOn, goToRecoverPassword, signInWithoutAuthentication,
+  handleSubmit, goToSignup, loading, keyboardOn,
 }) => (
   <ScrollView
     bounces={false}
@@ -20,7 +20,7 @@ const LoginComponent = ({
   >
     <StatusBar barStyle='light-content' />
     <Icon icon='logo' size={keyboardOn ? 50 : 80} />
-    <View style={StyleSheet.flatten([styles.inputContainer, styles.paddingTop])}>
+    <View style={StyleSheet.flatten([styles.inputContainer])}>
       <Field
         name='email'
         textContentType='emailAddress'
@@ -46,27 +46,15 @@ const LoginComponent = ({
           <View style={styles.loading}>
             <Spinner />
           </View> :
-          <MyButton label='Anmeldung' gradient fullWidth onPress={handleSubmit} />
+          <Button label='LOGIN' gradient fullWidth onPress={handleSubmit} />
       }
         
     </View>
     <View style={styles.footer}>
-      <MyButton
-        label='Weiter ohne Account'
+      <Button
+        label='Create account'
         labelTypography='body'
-        labelColor='white'
-        fullWidth onPress={signInWithoutAuthentication}
-      />
-      <MyButton
-        label='Passwort vergessen'
-        labelTypography='body'
-        labelColor='white'
-        fullWidth onPress={goToRecoverPassword}
-      />
-      <MyButton
-        label='Benutzerkonto erstellen'
-        labelTypography='body'
-        labelColor='white'
+        labelColor='black'
         fullWidth onPress={goToSignup}
       />
     </View>
@@ -75,15 +63,12 @@ const LoginComponent = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.whiteBackground,
     padding: Layout.spacing * 2,
   },
   contentContainerStyle: {
     alignItems: 'center',
     flexGrow: 1,
-  },
-  paddingTop: {
-    paddingTop: Layout.spacing * 7,
   },
   inputContainer: {
     justifyContent: 'space-between',

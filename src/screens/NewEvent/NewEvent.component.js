@@ -11,7 +11,7 @@ import React from 'react'
 
 import {DE_DATE_FORMAT, TIME_FORMAT} from '../../constants/DateFormats';
 import {TextInput, Typography} from '../../components';
-import {asyncValidate} from './NewEvent.container'
+// import {asyncValidate} from './NewEvent.container'
 import {formatCategories, parseCategories, dateFomatter, dateParsers, formatTime, parseTime} from '../../helpers/formHelpers';
 import {isBeforeToday} from '../../helpers/dateHelper';
 import BackButton from '../../components/BackButton/BackButton';
@@ -349,6 +349,6 @@ const validate = (values) => {
 export default reduxForm({
   form: 'newEvent',
   validate,
-  asyncValidate,
+  // asyncValidate,
   asyncChangeFields: ['addressString'],
 })(NewEventComponent)

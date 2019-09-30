@@ -14,6 +14,7 @@ export default {
   link: '#5BBDF9',
   error: '#F95B6E',
   overlay: 'rgba(0,0,0,0.5)',
-  gradient: ['#5BBDF9', '#B29DE9'],
+  gradient: ['#C15BE4', '#9542E8'],
   darkGradient: ['black', 'transparent'],
+  whiteBackground: '#ffffff',
 };

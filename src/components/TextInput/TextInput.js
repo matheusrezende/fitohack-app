@@ -40,7 +40,7 @@ const TextInput = ({
 }) => (
   <TouchableWithoutFeedback onPress={onPress}>
     <View style={styles.margin}>
-      <Typography variant='body' color={submitFailed && error ? 'error' : 'white'}>{label}</Typography>
+      <Typography variant='body' color={submitFailed && error ? 'error' : 'black'}>{label}</Typography>
       <View style={styles.container} >
         <Input
           {...inputProps}
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   input: {
-    color: Colors.white,
+    color: Colors.black,
     marginTop: Layout.spacing * 0.5,
     marginBottom: Layout.spacing * 1.5,
     width: '90%',

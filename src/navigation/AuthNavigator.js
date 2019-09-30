@@ -11,7 +11,7 @@ export default createStackNavigator({
 }, {
   navigationOptions: {
     headerStyle: {
-      backgroundColor: Colors.background,
+      backgroundColor: Colors.white,
       elevation: 0,
       borderBottomWidth: 0,
 

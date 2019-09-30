@@ -1,7 +1,6 @@
 import {bindActionCreators} from 'redux';
 import {compose, lifecycle} from 'recompose';
 import {connect} from 'react-redux';
-
 import {getLocation} from './actions/location';
 import RootNavigator from './navigation/RootNavigator';
 
