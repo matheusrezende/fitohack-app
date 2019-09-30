@@ -12,7 +12,7 @@ import {
   ScrollView,
   View,
 } from 'react-native';
-import {LinearGradient} from 'expo'
+import {LinearGradient} from 'expo-linear-gradient';
 import React from 'react'
 
 import {Typography, Spinner, Button} from '../../components';

@@ -4,7 +4,7 @@
  * @Last Modified by: @matheusrezende
  * @Last Modified time: 2018-08-16 09:48:30
  */
-import {LinearGradient} from 'expo'
+import {LinearGradient} from 'expo-linear-gradient';
 import {View, ImageBackground, ScrollView, Alert} from 'react-native'
 import React from 'react'
 

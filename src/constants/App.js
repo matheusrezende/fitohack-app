@@ -8,12 +8,11 @@
 let API_URL //eslint-disable-line
 
 if (__DEV__) {
-  API_URL = 'https://mymoxydev.herokuapp.com/api'
+  API_URL = 'https://fitohack.herokuapp.com/api'
 } else {
-  API_URL = 'https://mymoxystaging.herokuapp.com/api'
+  API_URL = 'https://fitohack.herokuapp.com/api'
 }
 const API_SECRET = ''
 
-const SENTRY_SECRET = 'https://7d3dde742a9f4e0bbf127c6b92203105@sentry.io/1263318'
 
-export {API_SECRET, SENTRY_SECRET, API_URL}
+export {API_SECRET, API_URL}

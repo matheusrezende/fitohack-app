@@ -4,7 +4,7 @@
  * @Last Modified by: matheus.rezende
  * @Last Modified time: 2018-11-08 08:34:29
  */
-import {LinearGradient} from 'expo'
+import {LinearGradient} from 'expo-linear-gradient';
 import {View, ImageBackground, Platform, ScrollView} from 'react-native'
 import {reduxForm, Field} from 'redux-form'
 import React from 'react'
