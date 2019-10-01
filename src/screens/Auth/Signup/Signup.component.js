@@ -14,11 +14,11 @@ import {validateEmail, validatePassword} from '../../../helpers/validators';
 import Layout from '../../../constants/Layout';
 import Icon from '../../../components/ImageIcon/ImageIcon';
 import Spinner from '../../../components/Spinner/Spinner';
-import {TextInput, Typography, Button} from '../../../components';
+import {TextInput, Button} from '../../../components';
 
 
 const SignupComponent = ({
-  handleSubmit, goToLogin, loading, keyboardOn,
+  handleSubmit, loading, keyboardOn,
 }) => (
   <ScrollView
     bounces={false}
@@ -29,7 +29,7 @@ const SignupComponent = ({
     {
       !keyboardOn && <Icon icon='logo' size={80} />
     }
-    
+
     <View style={keyboardOn ? styles.withKeyboardOn : StyleSheet.flatten([styles.inputContainer, styles.paddingTop])}>
       <Field
         name='username'
@@ -68,37 +68,23 @@ const SignupComponent = ({
         errorIcon='warning'
         component={TextInput}
       />
-      <View style={styles.buttonContainer}>
-        <Typography textAlign='center' variant='caption'>
-            Mit deiner Anmeldung stimmst du der Datenschutzerklärung und den AGB von MYMOXY zu.
-        </Typography>
-
-
-        <View style={styles.submitButton}>
-          {
-            loading ?
-              <View style={styles.loading}>
-                <Spinner />
-              </View> :
-              <Button label="Hier geht's lang..." gradient fullWidth onPress={handleSubmit} />
-
-          }
-        </View>
+      <View style={styles.submitButton}>
+        {
+          loading ?
+            <View style={styles.loading}>
+              <Spinner />
+            </View> :
+            <Button label='Create Account' gradient fullWidth onPress={handleSubmit} />
+        }
       </View>
     </View>
-    <Button
-      label='Bin schon dabei. einloggen'
-      labelTypography='body'
-      labelColor='white'
-      fullWidth onPress={goToLogin}
-    />
   </ScrollView>
 )
 
 const styles = StyleSheet.create({
   contentContainerStyle: {
     alignItems: 'center',
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.whiteBackground,
     padding: Layout.spacing * 2,
     minHeight: Layout.window.height,
   },
@@ -112,10 +98,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     justifyContent: 'space-between',
     width: '100%',
-  },
-  buttonContainer: {
-    alignItems: 'center',
-    paddingHorizontal: Layout.spacing * 4,
   },
   submitButton: {
     paddingTop: Layout.spacing * 2, width: '100%',
