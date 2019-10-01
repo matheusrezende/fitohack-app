@@ -6,30 +6,20 @@
 */
 import {createStackNavigator} from 'react-navigation'
 import React from 'react'
-
 import {normalize} from '../helpers/normalize';
 import BackButton from '../components/BackButton/BackButton';
-import ChangePassword from '../screens/ChangePassword';
 import Colors from '../constants/Colors';
-import EventDetail from '../screens/EventDetail';
-import EventDetailMapContainer from '../screens/EventDetailMap/EventDetailMap.container';
 import EventSuccess from '../screens/EventSuccess';
-import FavoritesContainer from '../screens/Events/FavoriteEvents.container';
 import Home from '../screens/Home';
-import LegalInformation from '../screens/LegalInformation/LegalInformation.component';
 import MapViewContainer from '../screens/MapView/MapView.container';
 import ModalContainer from '../screens/Modal/Modal.container';
 import MyEventsContainer from '../screens/Events/MyEvents.container';
-import NearEventsContainer from '../screens/Events/NearEvents.container';
 import NewEvent from '../screens/NewEvent';
 import Profile from '../screens/Profile';
-import ReportEvent from '../screens/ReportEvent';
 import Search from '../screens/Search';
 import SearchByCategoryContainer from '../screens/Events/SearchByCategory.container';
-import SearchEventsContainer from '../screens/SearchResults/SearchEvents.container';
-import SearchModalContainer from '../screens/SearchModal/SearchModal.container';
-import UpcomingEventsContainer from '../screens/Events/UpcomingEvents.container';
-import UpdateEvent from '../screens/UpdateEvent';
+import EventDetailModalComponent from '../screens/EventDetailModal/EventDetailModal.component';
+
 
 const main = createStackNavigator({
   Home,
@@ -37,28 +27,6 @@ const main = createStackNavigator({
   NewEvent,
   EventSuccess,
   Profile,
-  ChangePassword,
-  EventDetail,
-  ReportEvent,
-  UpdateEvent,
-  Info: {
-    screen: LegalInformation,
-    navigationOptions: ({navigation}) => ({
-      headerLeft: <BackButton
-        onPress={() => navigation.goBack()}
-      />,
-      headerTitle: 'Einstellungen',
-    }),
-  },
-  SearchResults: {
-    screen: SearchEventsContainer,
-    navigationOptions: ({navigation}) => ({
-      headerLeft: <BackButton
-        onPress={() => navigation.goBack()}
-      />,
-      headerTitle: 'Results',
-    }),
-  },
   MyEvents: {
     screen: MyEventsContainer,
     navigationOptions: ({navigation}) => ({
@@ -66,33 +34,6 @@ const main = createStackNavigator({
         onPress={() => navigation.goBack()}
       />,
       headerTitle: 'My Events',
-    }),
-  },
-  Favorites: {
-    screen: FavoritesContainer,
-    navigationOptions: ({navigation}) => ({
-      headerLeft: <BackButton
-        onPress={() => navigation.goBack()}
-      />,
-      headerTitle: 'Favorites',
-    }),
-  },
-  NearEvents: {
-    screen: NearEventsContainer,
-    navigationOptions: ({navigation}) => ({
-      headerLeft: <BackButton
-        onPress={() => navigation.goBack()}
-      />,
-      headerTitle: 'Events in der Nähe',
-    }),
-  },
-  UpcomingEvents: {
-    screen: UpcomingEventsContainer,
-    navigationOptions: ({navigation}) => ({
-      headerLeft: <BackButton
-        onPress={() => navigation.goBack()}
-      />,
-      headerTitle: 'Anstehende Events',
     }),
   },
   SearchByCategoryEvents: {
@@ -103,8 +44,6 @@ const main = createStackNavigator({
       />,
     }),
   },
-  
-  
 }, {
   navigationOptions: () => ({
     headerStyle: {
@@ -131,19 +70,21 @@ export default createStackNavigator(
     Modal: {
       screen: ModalContainer,
     },
-    MapModal: {
-      screen: EventDetailMapContainer,
-    },
-    SearchModal: {
-      screen: SearchModalContainer,
-    },
     Map: {
       screen: MapViewContainer,
     },
-  
+    EventDetailModal: {
+      screen: EventDetailModalComponent,
+      navigationOptions: {
+        gestureResponseDistance: {vertical: 1000}, // default is 135 },
+      },
+    },
   },
   {
     mode: 'modal',
+    
     headerMode: 'none',
+    transparentCard: true,
+    cardStyle: {opacity: 1},
   },
 )

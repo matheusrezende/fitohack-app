@@ -9,15 +9,21 @@ import {Image} from 'react-native'
 import Icons from '../../constants/Icons'
 
 const Icon = ({
-  icon, ...props
+  icon, darkIcon, ...props
 }) => (
   <Image
     {...props}
-  
+    style={darkIcon ? styles.image : null}
     source={Icons[icon]}
     fadeDuration={0}
   />
 )
+
+const styles = {
+  image: {
+    tintColor: 'black',
+  },
+}
 
 
 export default Icon

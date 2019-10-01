@@ -16,7 +16,7 @@ const LoginComponent = ({
   <ScrollView
     bounces={false}
     keyboardShouldPersistTaps='handled'
-    contentContainerStyle={StyleSheet.flatten([styles.container, styles.contentContainerStyle])}
+    contentContainerStyle={StyleSheet.flatten([styles.container, styles.contentContainerStyle, styles.paddingTop])}
   >
     <StatusBar barStyle='light-content' />
     <Icon icon='logo' size={keyboardOn ? 50 : 80} />
@@ -26,7 +26,7 @@ const LoginComponent = ({
         textContentType='emailAddress'
         keyboardType='email-address'
         autoCapitalize='none'
-        label='koe'
+        label='Email'
         validate={validateEmail}
         errorIcon='warning'
         component={TextInput}
@@ -69,6 +69,9 @@ const styles = StyleSheet.create({
   contentContainerStyle: {
     alignItems: 'center',
     flexGrow: 1,
+  },
+  paddingTop: {
+    paddingTop: Layout.spacing * 7,
   },
   inputContainer: {
     justifyContent: 'space-between',
