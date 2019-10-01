@@ -15,6 +15,7 @@ import {loadingSelector} from '../../reducers/app/loading';
 import {locationSelector} from '../../reducers/location';
 import MapView from './Home.component';
 import * as CategoriesActions from '../../actions/categories';
+import {withNavigation} from 'react-navigation'
 
 const mapStateToProps = (state) => ({
   loading: loadingSelector(state, NEAR_EVENT),
@@ -30,6 +31,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
+  withNavigation,
   withStateHandlers({
     selected: null,
     sliderValue: 5,
@@ -45,6 +47,7 @@ export default compose(
   withHandlers({
     getCurrentLocation: ({location}) => () => ({longitude: location.coords.longitude, latitude: location.coords.latitude}),
     getEventLocation: () => ({location}) => ({latitude: location.coordinates[1], longitude: location.coordinates[0]}),
+    onCreateEventPress: ({ navigation }) => () => navigation.navigate('NewEvent'),
   }),
   withHandlers({
     calculateRegion: ({getCurrentLocation}) => () => ({

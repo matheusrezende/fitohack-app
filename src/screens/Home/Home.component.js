@@ -25,7 +25,7 @@ export default ({
   calculateRegion,
   loading,
   getEventLocation,
-
+  onCreateEventPress,
 }) => (
   <React.Fragment>
     {Platform.OS === 'ios' && <StatusBar barStyle='dark-content' />}
@@ -67,6 +67,10 @@ export default ({
     
     <View style={styles.backButton}>
       <IconButton darkIcon icon='drawer' onPress={navigation.openDrawer} />
+    </View>
+
+    <View style={styles.actionButton}>
+      <IconButton icon='plusOval' onPress={onCreateEventPress} />
     </View>
     
     {
@@ -120,5 +124,11 @@ const styles = {
     bottom: 0,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  actionButton: {
+    position: 'absolute',
+    zIndex: 300,
+    right: Layout.spacing * 4,
+    bottom: Layout.spacing * 6,
   },
 }
