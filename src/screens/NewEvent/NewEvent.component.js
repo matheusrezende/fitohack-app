@@ -9,10 +9,10 @@ import {View, Platform, ScrollView} from 'react-native'
 import {reduxForm, Field} from 'redux-form'
 import React from 'react'
 
-import {DE_DATE_FORMAT, TIME_FORMAT} from '../../constants/DateFormats';
+import {TIME_FORMAT} from '../../constants/DateFormats';
 import {TextInput, Typography} from '../../components';
 // import {asyncValidate} from './NewEvent.container'
-import {dateFomatter, dateParsers, formatTime, parseTime} from '../../helpers/formHelpers';
+import {formatTime, parseTime} from '../../helpers/formHelpers';
 import {isBeforeToday} from '../../helpers/dateHelper';
 import BackButton from '../../components/BackButton/BackButton';
 import CategoriesPicker from '../../components/CategoriesPicker/CategoriesPicker.container';
@@ -21,12 +21,9 @@ import CustomHeader from '../../components/CustomHeader/CustomHeader';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import Icons from '../../constants/Icons';
 import Layout from '../../constants/Layout';
-import LinkButton from '../../components/LinkButton/LinkButton';
 import MapComponent from '../../components/MapComponent/Map.component';
 import SubmitEventButtonContainer from
   '../../components/SubmitEventButton/SubmitEventButton.container';
-import LocationsComponent from '../../components/LocationsComponent/LocationsComponent';
-
 
 const NewEventComponent = ({
   openModal,
@@ -111,23 +108,16 @@ const NewEventComponent = ({
           />
           <Field
             name='addressString'
-            label='Ort'
+            label='Location'
             errorIcon='warning'
             shouldShowValidationStatus
-            placeholder='Wo findet das Event statt'
+            placeholder='Where does the location start?'
             iconHeight={20}
             iconWidth={15}
             icon='locationMark'
-            onFocus={openModal({
-              component: <Field
-                name='addressString'
-                onSelect={onLocationSelect}
-                component={LocationsComponent}
-              />,
-              title: 'Location',
-              clear: resetField('addressString address'),
-            })}
             onIconPress={getCurrentLocation}
+            editable={false}
+            onPress={getCurrentLocation}
             component={TextInput}
           />
           {
@@ -145,70 +135,19 @@ const NewEventComponent = ({
                 />
               </View>
           }
-          <View style={styles.dateRow}>
-            <View style={styles.dateItemWidth}>
-              <Field
-                name='beginning'
-                label='Von'
-                format={dateFomatter}
-                parse={dateParsers}
-                errorIcon='warning'
-                dateFormat={DE_DATE_FORMAT}
-                iconSource={Icons.calendarGradient}
-                component={DatePicker}
-              />
-            </View>
-            <View style={styles.dateItem}>
-              {
-                !showStartingTimePicker ?
-                  <View style={styles.plusButtonStyle}>
-                    <LinkButton onPress={showStarting} label='+ Startzeit' />
-                  </View> :
-                  <Field
-                    name='beginningTime'
-                    label=' '
-                    mode='time'
-                    format={formatTime}
-                    parse={parseTime}
-                    errorIcon='warning'
-                    dateFormat={TIME_FORMAT}
-                    iconSource={Icons.clock}
-                    component={DatePicker}
-                  />
-              }
-            </View>
-          </View>
           <View style={{...styles.dateRow, ...styles.dateMargin}}>
-            <View style={styles.dateItemWidth}>
+            <View style={styles.dateItem}>
               <Field
-                name='ending'
-                label='Bis'
-                dateFormat={DE_DATE_FORMAT}
+                name='endingTime'
+                label=' '
+                format={formatTime}
+                parse={parseTime}
+                mode='time'
+                dateFormat={TIME_FORMAT}
                 errorIcon='warning'
-                format={dateFomatter}
-                parse={dateParsers}
-                iconSource={Icons.calendarGradient}
+                iconSource={Icons.clock}
                 component={DatePicker}
               />
-            </View>
-            <View style={styles.dateItem}>
-              {
-                !showEndingTimePicker ?
-                  <View style={styles.plusButtonStyle}>
-                    <LinkButton onPress={showEnding} label='+ Endzeit' />
-                  </View> :
-                  <Field
-                    name='endingTime'
-                    label=' '
-                    format={formatTime}
-                    parse={parseTime}
-                    mode='time'
-                    dateFormat={TIME_FORMAT}
-                    errorIcon='warning'
-                    iconSource={Icons.clock}
-                    component={DatePicker}
-                  />
-              }
             </View>
           </View>
         </View>
@@ -242,11 +181,8 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  dateItemWidth: {
-    width: '47%',
-  },
   dateItem: {
-    width: '47%', alignItems: 'center', justifyContent: 'center',
+    width: '100%', alignItems: 'center', justifyContent: 'center',
   },
   dateMargin: {
     marginTop: Layout.spacing,

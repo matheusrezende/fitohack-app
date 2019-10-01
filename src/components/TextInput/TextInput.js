@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   input: {
-    color: Colors.black,
+    color: Colors.textColor,
     marginTop: Layout.spacing * 0.5,
     marginBottom: Layout.spacing * 1.5,
     width: '90%',

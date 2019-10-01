@@ -129,13 +129,15 @@ export default compose(
 
       _.debounce(() => clear('newEvent', false, false, fields), 1000)()
     },
-  
   }),
   withHandlers({
     getCurrentLocation: ({location, reverseGeocode}) => () => reverseGeocode(location.coords),
     getLocationFromMap: ({reverseGeocode}) => (event) => reverseGeocode(event.nativeEvent.coordinate),
   }),
   lifecycle({
+    componentDidMount() {
+      this.props.getCurrentLocation();
+    },
     componentWillReceiveProps(nextProps) {
       if (nextProps.beginningDate !== this.props.beginningDate && (nextProps.beginningDate > this.props.endingDate || !nextProps.endingDate)) {
         this.props.changeField('newEvent', 'ending', nextProps.beginningDate)
