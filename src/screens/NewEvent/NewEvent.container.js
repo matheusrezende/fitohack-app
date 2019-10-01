@@ -22,7 +22,6 @@ import NewEventComponent from './NewEvent.component'
 
 
 const mapStateToProps = (state) => ({
-  picture: formValueSelector('newEvent')(state, 'picture'),
   categories: categoryArraySelector(state),
   selectedCategories: formValueSelector('newEvent')(state, 'categories'),
   beginningDate: formValueSelector('newEvent')(state, 'beginning'),

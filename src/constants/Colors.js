@@ -18,4 +18,5 @@ export default {
   darkGradient: ['black', 'transparent'],
   whiteBackground: '#ffffff',
   textColor: '#fff',
+  primaryColor: '#C15BE4',
 };
