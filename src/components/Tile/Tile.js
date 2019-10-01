@@ -7,12 +7,13 @@
 import React from 'react'
 import {withNavigation} from 'react-navigation'
 import {compose, withHandlers} from 'recompose'
-import {View, TouchableOpacity, Image} from 'react-native'
+import {View, TouchableOpacity, ImageBackground} from 'react-native'
 import Colors from '../../constants/Colors';
 import Typography from '../Typography/Typography';
 import {LinearGradient} from 'expo-linear-gradient';
+import Layout from '../../constants/Layout';
 
-const Tile = ({title, picture, onPress, setSelected, selected, navigate}) => (
+const Tile = ({title, picture, onPress, setSelected, selected, navigate, icon}) => (
   <View style={styles.tile}>
     <TouchableOpacity style={styles.touchableOpacity} onPress={setSelected ? onPress : navigate}>
       <LinearGradient
@@ -21,7 +22,9 @@ const Tile = ({title, picture, onPress, setSelected, selected, navigate}) => (
         end={[0.5, 1]}
         style={{ ...styles.overlay, ...(selected ? styles.selected : {}) }}
       />
-      <Image resizeMode='cover' style={styles.imageStyle} source={{uri: picture, cache: 'force-cache'}} />
+      <View style={styles.imageWrapper}>
+        <ImageBackground resizeMode='center' style={styles.imageStyle} source={icon ? icon : {uri: picture, cache: 'force-cache'}} />
+      </View>
       <View style={styles.tileNameContainer}>
         <Typography variant='body'> {title}</Typography>
       </View>
@@ -55,11 +58,18 @@ const styles = {
   selected: {
     borderColor: 'black',
   },
+  imageWrapper: {
+    height: '70%',
+    width: '70%',
+    overflow: 'hidden',
+    position: 'absolute',
+    zIndex: 350,
+    margin: '15%',
+  },
   imageStyle: {
     height: '100%',
     width: '100%',
-    overflow: 'hidden',
-    position: 'absolute',
+    zIndex: 350,
   },
   tileNameContainer: {
     position: 'absolute',
