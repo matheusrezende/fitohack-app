@@ -7,7 +7,6 @@
 import {bindActionCreators} from 'redux';
 import {compose, withHandlers, lifecycle, withStateHandlers} from 'recompose';
 import {connect} from 'react-redux';
-import getDirections from 'react-native-google-maps-directions'
 
 import {NEAR_EVENT} from '../../constants/Actions';
 import {eventNearArraySelector} from '../../reducers/event/list/near';
@@ -15,6 +14,7 @@ import {getAllNearEvents} from '../../actions/event';
 import {loadingSelector} from '../../reducers/app/loading';
 import {locationSelector} from '../../reducers/location';
 import MapView from './Home.component';
+import * as CategoriesActions from '../../actions/categories';
 
 const mapStateToProps = (state) => ({
   loading: loadingSelector(state, NEAR_EVENT),
@@ -24,6 +24,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getEvents: bindActionCreators(getAllNearEvents, dispatch),
+  getAllCategories: bindActionCreators(CategoriesActions.getAllCategories, dispatch),
+   
 })
 
 export default compose(
@@ -51,24 +53,6 @@ export default compose(
       longitudeDelta: 0.0217,
 
     }),
-
-    openGoogleMapsNavigation: ({getEventLocation, getCurrentLocation}) => (event) => () => {
-      const navigationObj = {
-        source: getCurrentLocation(),
-        destination: getEventLocation(event),
-        params: [
-          {
-            key: 'travelmode',
-            value: 'driving', // may be "walking", "bicycling" or "transit" as well
-          },
-          {
-            key: 'dir_action',
-            value: 'navigate', // this instantly initializes navigation using the given travel mode
-          },
-        ],
-      }
-      getDirections(navigationObj)
-    },
     onClose: ({navigation}) => () => {
       navigation.goBack()
     },
@@ -80,6 +64,7 @@ export default compose(
   lifecycle({
     componentDidMount() {
       this.props.getEvents(this.props.location.coords)
+      this.props.getAllCategories()
     },
 
   }),
