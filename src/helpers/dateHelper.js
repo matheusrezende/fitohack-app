@@ -6,7 +6,6 @@
  */
 import Moment from 'moment'
 import 'moment-timezone'
-import 'moment/locale/de'
 import {extendMoment} from 'moment-range';
 
 import {MONTH, DAY_OF_THE_WEEK, DATE_FORMAT, DATE_TIME_FORMAT, TIME_FORMAT} from '../constants/DateFormats';

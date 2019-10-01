@@ -38,8 +38,8 @@ const styles = {
   },
   tile: {
     aspectRatio: 1,
-    height: '48%',
-    width: '48%',
+    height: '20%',
+    width: '20%',
     marginVertical: '1%',
   },
   imageStyle: {
