@@ -11,6 +11,7 @@ import Divider from '../Divider/Divider';
 import Colors from '../../constants/Colors';
 import Typography from '../Typography/Typography';
 import Icons from '../../constants/Icons';
+import moment from 'moment';
 
 /*
   eslint-disable
@@ -31,7 +32,7 @@ export default ({
     <Typography variant='body'>{label}</Typography>
     <DatePicker
       style={styles.container}
-      date={value}
+      date={value || moment()}
       {...inputProps}
       onDateChange={onChange}
       confirmBtnText='Bestätigen'

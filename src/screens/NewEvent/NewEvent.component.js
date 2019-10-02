@@ -24,6 +24,7 @@ import Layout from '../../constants/Layout';
 import MapComponent from '../../components/MapComponent/Map.component';
 import SubmitEventButtonContainer from
   '../../components/SubmitEventButton/SubmitEventButton.container';
+import moment from 'moment';
 
 const NewEventComponent = ({
   openModal,
@@ -138,13 +139,14 @@ const NewEventComponent = ({
             <View style={styles.dateItem}>
               <Field
                 name='endingTime'
-                label=' '
+                label='Ending time'
                 format={formatTime}
                 parse={parseTime}
                 mode='time'
                 dateFormat={TIME_FORMAT}
                 errorIcon='warning'
                 iconSource={Icons.clock}
+                input={{ value: moment().add(2, 'hours') }}
                 component={DatePicker}
               />
             </View>
