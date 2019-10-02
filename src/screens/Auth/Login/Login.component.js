@@ -1,5 +1,5 @@
 import React from 'react'
-import {ScrollView, StyleSheet, View, StatusBar, Platform} from 'react-native'
+import {ScrollView, StyleSheet, View, Platform} from 'react-native'
 import {reduxForm, Field} from 'redux-form'
 import TextInput from '../../../components/TextInput/TextInput';
 import Colors from '../../../constants/Colors';

@@ -9,7 +9,10 @@ export default createStackNavigator({
     screen: LoginScreen,
     navigationOptions: () => ({ header: null }),
   },
-  Signup: SignupScreen,
+  Signup: {
+    screen: SignupScreen,
+    navigationOptions: () => ({ header: null }),
+  },
   RecoverPassword: RecoverPasswordContainer,
 }, {
   navigationOptions: {
