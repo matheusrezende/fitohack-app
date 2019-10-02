@@ -6,7 +6,7 @@
  * @Last Modified time: 2018-12-07 09:01:02
  */
 import {Field, reduxForm, values} from 'redux-form';
-import {ScrollView, StyleSheet, View, StatusBar} from 'react-native'
+import {ScrollView, StyleSheet, View, Platform} from 'react-native'
 import React from 'react'
 
 import Colors from '../../../constants/Colors';
@@ -15,19 +15,26 @@ import Layout from '../../../constants/Layout';
 import Icon from '../../../components/ImageIcon/ImageIcon';
 import Spinner from '../../../components/Spinner/Spinner';
 import {TextInput, Button} from '../../../components';
+import {LinearGradient} from 'expo-linear-gradient';
 
 
 const SignupComponent = ({
-  handleSubmit, loading, keyboardOn,
+  handleSubmit, loading, keyboardOn, goToLogin,
 }) => (
   <ScrollView
     bounces={false}
     keyboardShouldPersistTaps='handled'
     contentContainerStyle={styles.contentContainerStyle}
   >
-    <StatusBar barStyle='light-content' />
+    <LinearGradient
+      style={styles.gradient}
+      colors={[...Colors.gradient, 'transparent']}
+      start={Platform.OS === 'ios' ? [0, 0] : [0, 0]}
+      end={Platform.OS === 'ios' ? [0, 0.5] : [0, 0.7]}
+    />
+    <View style={{ padding: 40 }} />
     {
-      !keyboardOn && <Icon icon='logo' size={80} />
+      !keyboardOn && <Icon icon='whiteLogo' size={80} />
     }
 
     <View style={keyboardOn ? styles.withKeyboardOn : StyleSheet.flatten([styles.inputContainer, styles.paddingTop])}>
@@ -78,11 +85,27 @@ const SignupComponent = ({
         }
       </View>
     </View>
+    <View style={styles.footer}>
+      <Button
+        label='Login instead'
+        labelTypography='body'
+        labelColor='white'
+        fullWidth onPress={goToLogin}
+      />
+    </View>
   </ScrollView>
 )
 
 const styles = StyleSheet.create({
+  gradient: {
+    position: 'absolute',
+    top: (Platform.OS === 'ios' ? -90 : 0),
+    right: 0,
+    bottom: (Platform.OS === 'ios' ? '60%' : '50%'),
+    left: 0,
+  },
   contentContainerStyle: {
+    marginTop: Layout.spacing * 3,
     alignItems: 'center',
     backgroundColor: Colors.grayBackground,
     padding: Layout.spacing * 2,
@@ -104,6 +127,11 @@ const styles = StyleSheet.create({
   },
   loading: {
     marginVertical: Layout.spacing,
+  },
+  footer: {
+    marginTop: Layout.spacing * 5,
+    marginBottom: Layout.spacing * 5,
+    alignItems: 'center',
   },
 })
 

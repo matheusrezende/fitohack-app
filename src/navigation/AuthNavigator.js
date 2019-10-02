@@ -5,8 +5,14 @@ import Colors from '../constants/Colors';
 import RecoverPasswordContainer from '../screens/Auth/RecoverPassword/RecoverPassword.container';
 
 export default createStackNavigator({
-  Login: LoginScreen,
-  Signup: SignupScreen,
+  Login: {
+    screen: LoginScreen,
+    navigationOptions: () => ({ header: null }),
+  },
+  Signup: {
+    screen: SignupScreen,
+    navigationOptions: () => ({ header: null }),
+  },
   RecoverPassword: RecoverPasswordContainer,
 }, {
   navigationOptions: {
@@ -14,7 +20,6 @@ export default createStackNavigator({
       backgroundColor: Colors.grayBackground,
       elevation: 0,
       borderBottomWidth: 0,
-      
     },
     
   },

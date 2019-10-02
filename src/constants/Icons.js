@@ -45,6 +45,8 @@ import more from '../assets/icons/more.png'
 import profile from '../assets/icons/profile.png'
 import info from '../assets/icons/info.png'
 import cameraGradient from '../assets/icons/camera-gradient.png'
+import whiteLogo from '../assets/icons/WhiteLogo.png'
+import darkLogo from '../assets/icons/DarkLogo.png'
 
 export default {
   warning,
@@ -88,4 +90,6 @@ export default {
   share,
   mapDot,
   heartWhite,
+  whiteLogo,
+  darkLogo,
 }

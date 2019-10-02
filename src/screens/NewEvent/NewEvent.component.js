@@ -159,7 +159,9 @@ const styles = {
     paddingTop: Layout.spacing * 3,
     backgroundColor: Colors.background,
     flex: 1,
+    position: 'absolute',
     paddingHorizontal: Layout.spacing,
+    top: (Platform.OS === 'ios' ? -90 : 0),
   },
   containerStyle: {
     position: 'absolute',

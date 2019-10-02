@@ -1,5 +1,5 @@
 import React from 'react'
-import {ScrollView, StyleSheet, View, StatusBar} from 'react-native'
+import {ScrollView, StyleSheet, View, Platform} from 'react-native'
 import {reduxForm, Field} from 'redux-form'
 import TextInput from '../../../components/TextInput/TextInput';
 import Colors from '../../../constants/Colors';
@@ -8,6 +8,7 @@ import Layout from '../../../constants/Layout';
 import Icon from '../../../components/ImageIcon/ImageIcon';
 import {Button} from '../../../components';
 import Spinner from '../../../components/Spinner/Spinner';
+import {LinearGradient} from 'expo-linear-gradient';
 
 
 const LoginComponent = ({
@@ -18,11 +19,18 @@ const LoginComponent = ({
     keyboardShouldPersistTaps='handled'
     contentContainerStyle={StyleSheet.flatten([styles.container, styles.contentContainerStyle, styles.paddingTop])}
   >
-    <StatusBar barStyle='light-content' />
-    <Icon icon='logo' size={keyboardOn ? 50 : 80} />
+    <LinearGradient
+      style={styles.gradient}
+      colors={[...Colors.gradient, 'transparent']}
+      start={Platform.OS === 'ios' ? [0, 0] : [0, 0]}
+      end={Platform.OS === 'ios' ? [0, 0.5] : [0, 0.7]}
+    />
+    <View style={{ padding: 40 }} />
+    <Icon icon='whiteLogo' size={keyboardOn ? 50 : 80} />
     <View style={StyleSheet.flatten([styles.inputContainer])}>
       <Field
         name='email'
+        label='Email'
         textContentType='emailAddress'
         keyboardType='email-address'
         autoCapitalize='none'
@@ -54,7 +62,7 @@ const LoginComponent = ({
       <Button
         label='Create account'
         labelTypography='body'
-        labelColor='black'
+        labelColor='white'
         fullWidth onPress={goToSignup}
       />
     </View>
@@ -66,7 +74,15 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.grayBackground,
     padding: Layout.spacing * 2,
   },
+  gradient: {
+    position: 'absolute',
+    top: (Platform.OS === 'ios' ? -90 : 0),
+    right: 0,
+    bottom: (Platform.OS === 'ios' ? '60%' : '50%'),
+    left: 0,
+  },
   contentContainerStyle: {
+    bottom: 0,
     alignItems: 'center',
     flexGrow: 1,
   },
@@ -74,6 +90,7 @@ const styles = StyleSheet.create({
     paddingTop: Layout.spacing * 7,
   },
   inputContainer: {
+    marginTop: Layout.spacing * 3,
     justifyContent: 'space-between',
     width: '100%',
   },
