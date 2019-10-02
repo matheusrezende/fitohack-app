@@ -49,3 +49,7 @@ export const RECOVER_PASSWORD = 'RECOVER_PASSWORD'
 
 // report actions
 export const REPORT_EVENT = 'REPORT_EVENT'
+
+
+export const SET_EVENT_DETAIL = 'SET_EVENT_DETAIL'
+export const SET_PARTICIPANT = 'SET_PARTICIPANT'

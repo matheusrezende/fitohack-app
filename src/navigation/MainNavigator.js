@@ -18,7 +18,7 @@ import NewEvent from '../screens/NewEvent';
 import Profile from '../screens/Profile';
 import Search from '../screens/Search';
 import SearchByCategoryContainer from '../screens/Events/SearchByCategory.container';
-import EventDetailModalComponent from '../screens/EventDetailModal/EventDetailModal.component';
+import EventDetailModalComponent from '../screens/EventDetailModal/EventDetailModal.container';
 
 
 const main = createStackNavigator({

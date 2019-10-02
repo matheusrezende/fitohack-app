@@ -110,3 +110,13 @@ export const getFavoritedEvents = () => createRequestAction(
   API.FAVORITED_EVENTS,
   {method: 'GET'},
 )
+
+
+export const setEventDetail = (event) => createAction(ACTIONS.SET_EVENT_DETAIL, event);
+
+
+export const joinEvent = (eventId) => createRequestAction(
+  ACTIONS.SET_PARTICIPANT,
+  API.POST_PARTICIPANT + eventId,
+  {method: 'POST', body: {}},
+)

@@ -8,7 +8,7 @@ import MapView from 'react-native-maps';
 import {View, Platform, StatusBar} from 'react-native'
 import React from 'react'
 
-import {Spinner} from '../../components';
+import {Spinner, Button} from '../../components';
 import Colors from '../../constants/Colors';
 import Icon from '../../components/ImageIcon/ImageIcon';
 import IconButton from '../../components/IconButton/IconButton';
@@ -26,6 +26,7 @@ export default ({
   loading,
   getEventLocation,
   onCreateEventPress,
+  setEventDetail,
 }) => (
   <React.Fragment>
     {Platform.OS === 'ios' && <StatusBar barStyle='dark-content' />}
@@ -50,7 +51,10 @@ export default ({
           return (
             <MapView.Marker
               key={index}
-              onPress={() => navigation.navigate('EventDetailModal', {event: item})}
+              onPress={() => {
+                setEventDetail(item)
+                navigation.navigate('EventDetailModal', {event: item})
+              }}
               coordinate={{longitude, latitude}} title={title}
             >
               {
@@ -70,7 +74,7 @@ export default ({
     </View>
 
     <View style={styles.actionButton}>
-      <IconButton icon='plusOval' onPress={onCreateEventPress} />
+      <Button gradient label='START A SESSION' onPress={onCreateEventPress} />
     </View>
     
     {
@@ -127,8 +131,9 @@ const styles = {
   },
   actionButton: {
     position: 'absolute',
-    zIndex: 300,
-    right: Layout.spacing * 4,
+    left: 0,
+    right: 0,
+    padding: Layout.spacing * 2,
     bottom: Layout.spacing * 6,
   },
 }

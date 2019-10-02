@@ -7,15 +7,16 @@
 import {bindActionCreators} from 'redux';
 import {compose, withHandlers, lifecycle, withStateHandlers} from 'recompose';
 import {connect} from 'react-redux';
+import {withNavigation} from 'react-navigation'
 
 import {NEAR_EVENT} from '../../constants/Actions';
 import {eventNearArraySelector} from '../../reducers/event/list/near';
-import {getAllNearEvents} from '../../actions/event';
+
 import {loadingSelector} from '../../reducers/app/loading';
 import {locationSelector} from '../../reducers/location';
 import MapView from './Home.component';
 import * as CategoriesActions from '../../actions/categories';
-import {withNavigation} from 'react-navigation'
+import * as EventActions from '../../actions/event';
 
 const mapStateToProps = (state) => ({
   loading: loadingSelector(state, NEAR_EVENT),
@@ -24,9 +25,9 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getEvents: bindActionCreators(getAllNearEvents, dispatch),
+  getEvents: bindActionCreators(EventActions.getAllNearEvents, dispatch),
   getAllCategories: bindActionCreators(CategoriesActions.getAllCategories, dispatch),
-   
+  setEventDetail: bindActionCreators(EventActions.setEventDetail, dispatch),
 })
 
 export default compose(
@@ -36,18 +37,13 @@ export default compose(
     selected: null,
     sliderValue: 5,
   }, {
-    selectEvent: () => (event) => ({
-      selected: event,
-    }),
-
     clearSelection: () => () => ({selected: null}),
-
     changeSliderValue: () => (value) => ({sliderValue: Math.round(value)}),
   }),
   withHandlers({
     getCurrentLocation: ({location}) => () => ({longitude: location.coords.longitude, latitude: location.coords.latitude}),
     getEventLocation: () => ({location}) => ({latitude: location.coordinates[1], longitude: location.coordinates[0]}),
-    onCreateEventPress: ({ navigation }) => () => navigation.navigate('NewEvent'),
+    onCreateEventPress: ({navigation}) => () => navigation.navigate('NewEvent'),
   }),
   withHandlers({
     calculateRegion: ({getCurrentLocation}) => () => ({

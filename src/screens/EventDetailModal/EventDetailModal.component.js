@@ -9,9 +9,9 @@ import Tile from '../../components/Tile/Tile';
 import Button from '../../components/Button/Button';
 import {DATE_RANGE} from '../../constants/DateFormats';
 
-export default ({navigation}) => {
-  const event = navigation.getParam('event');
-  console.log(event)
+export default ({navigation, event}) => {
+  
+  
   return (
     <View style={styles.container}>
       <View style={styles.subcontainer}>
@@ -42,7 +42,7 @@ export default ({navigation}) => {
           <Typography variant='label'>Participants?</Typography>
           <FlatList
             horizontal
-            ItemSeparatorComponent={() => <View style={{height: 10, width: 10}} />}
+            ItemSeparatorComponent={() => <View style={styles.divider} />}
             data={event.participants}
             renderItem={({item}) => {
               console.log('participants', item)
@@ -51,7 +51,7 @@ export default ({navigation}) => {
             keyExtractor={(item, index) => index.toString()}
           />
         </View>
-        <View style={{paddingVertical: 10}}>
+        <View style={styles.paddingVertical}>
           <Button gradient label='JOIN' />
         </View>
       </View>
@@ -118,4 +118,11 @@ const styles = {
   padding: {
     paddingLeft: Layout.spacing * 3,
   },
+  divider: {
+    height: 10, width: 10
+  },
+
+  paddingVertical: {
+    paddingVertical: 10
+  }
 }

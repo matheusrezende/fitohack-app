@@ -15,7 +15,7 @@ import {
 import {LinearGradient} from 'expo-linear-gradient';
 import React from 'react'
 
-import {Typography, Spinner, Button} from '../../components';
+import {Typography, Spinner} from '../../components';
 import BackButton from '../../components/BackButton/BackButton';
 import CameraButtonContainer from './CameraButton/CameraButton.container';
 import Colors from '../../constants/Colors';
@@ -27,7 +27,7 @@ import ProfileDataRow from './ProfileDataRow.component';
 import SettingsButtonContainer from './Settings/SettingsButton.container';
 
 const Profile = ({
-  verifySuccess, verified, picture, username, numberOfFavorites, loadingProfilePicture, email, navigation, verifyAccount, verifyLoading, loading, onRefresh,
+  picture, username, loadingProfilePicture, email, navigation, loading, onRefresh,
 }) => (
   <View style={styles.container}>
     <ImageBackground

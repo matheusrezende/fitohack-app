@@ -26,3 +26,5 @@ export const VERIFY_ACCOUNT = '/users/createVerificationToken'
 export const CHANGE_PASSWORD = '/users/:id/changepassword'
 export const RECOVER_PASSWORD = '/auth/lostpassword'
 export const REPORT = '/report'
+
+export const POST_PARTICIPANT = '/api/participants/?eventId='
