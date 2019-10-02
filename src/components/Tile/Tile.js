@@ -9,11 +9,9 @@ import {withNavigation} from 'react-navigation'
 import {compose, withHandlers} from 'recompose'
 import {View, TouchableOpacity, ImageBackground} from 'react-native'
 import Colors from '../../constants/Colors';
-import Typography from '../Typography/Typography';
 import {LinearGradient} from 'expo-linear-gradient';
-import Layout from '../../constants/Layout';
 
-const Tile = ({title, picture, onPress, setSelected, selected, navigate, icon}) => (
+const Tile = ({picture, onPress, setSelected, selected, navigate, icon}) => (
   <View style={styles.tile}>
     <TouchableOpacity style={styles.touchableOpacity} onPress={setSelected ? onPress : navigate}>
       <LinearGradient
@@ -23,10 +21,7 @@ const Tile = ({title, picture, onPress, setSelected, selected, navigate, icon}) 
         style={{ ...styles.overlay, ...(selected ? styles.selected : {}) }}
       />
       <View style={styles.imageWrapper}>
-        <ImageBackground resizeMode='center' style={styles.imageStyle} source={icon ? icon : {uri: picture, cache: 'force-cache'}} />
-      </View>
-      <View style={styles.tileNameContainer}>
-        <Typography variant='body'> {title}</Typography>
+        <ImageBackground resizeMode='cover' style={styles.imageStyle} source={icon ? icon : {uri: picture, cache: 'force-cache'}} />
       </View>
     </TouchableOpacity>
   </View>

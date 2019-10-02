@@ -7,17 +7,18 @@ import {loadingSelector} from '../../reducers/app/loading';
 import {GET_CATEGORIES} from '../../constants/Actions';
 import cycling from '../../assets/categories/cycling.png';
 import run from '../../assets/categories/run.png';
-import skate from '../../assets/categories/skate.png';
+import skating from '../../assets/categories/skate.png';
 import team_sport from '../../assets/categories/team_sport.png';
 import workout from '../../assets/categories/workout.png';
 import yoga from '../../assets/categories/yoga.png';
 
 const images = {
   cycling,
-  skate,
+  skating,
   'team\ sport': team_sport,
   workout,
   yoga,
+  run,
 };
 
 const addImageToCategories = (categories) => {
