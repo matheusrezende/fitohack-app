@@ -130,6 +130,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     marginTop: Layout.spacing * 5,
+    marginBottom: Layout.spacing * 5,
     alignItems: 'center',
   },
 })

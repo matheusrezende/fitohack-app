@@ -11,11 +11,12 @@ import {
 } from 'react-native';
 import Icon from '../../../components/ImageIcon/ImageIcon';
 import {Spinner} from '../../../components';
+import Colors from '../../../constants/Colors';
 
 const AuthLoadingComponent = () => (
   <View style={styles.wrapper}>
     <View style={styles.container}>
-      <Icon icon='logo' size={80} />
+      <Icon icon='darkLogo' size={80} />
       <Spinner />
     </View>
   </View>
@@ -25,6 +26,7 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     paddingTop: 200,
+    backgroundColor: Colors.grayBackground,
   },
   container: {
     height: 500,
