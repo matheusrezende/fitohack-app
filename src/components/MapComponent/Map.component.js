@@ -12,11 +12,11 @@ import Icon from '../ImageIcon/ImageIcon';
 import mapMarker from '../../assets/icons/map-marker.png'
 
 export default ({
-  latitude, longitude, title, onDragEnd, draggableMarker, onPress,
+  latitude, longitude, title, onDragEnd, draggableMarker, onPress, style = {},
 }) => (
   <MapView
     onPress={onPress}
-    style={styles.container}
+    style={{...styles.container, ...style}}
     region={{
       latitude,
       longitude,

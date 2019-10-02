@@ -122,18 +122,17 @@ const NewEventComponent = ({
           />
           {
             formLatitude && formLongitude &&
-              <View style={styles.mapContainer}>
-                <MapComponent
-                  latitude={formLatitude}
-                  longitude={formLongitude}
-                  markers={[{
-                    latitude: formLatitude,
-                    longitude: formLongitude,
-                  }]}
-                  draggableMarker
-                  onDragEnd={getLocationFromMap}
-                />
-              </View>
+              <MapComponent
+                latitude={formLatitude}
+                longitude={formLongitude}
+                markers={[{
+                  latitude: formLatitude,
+                  longitude: formLongitude,
+                }]}
+                draggableMarker
+                onDragEnd={getLocationFromMap}
+                style={styles.map}
+              />
           }
           <View style={{...styles.dateRow, ...styles.dateMargin}}>
             <View style={styles.dateItem}>
@@ -187,8 +186,7 @@ const styles = {
   dateMargin: {
     marginTop: Layout.spacing,
   },
-  mapContainer: {
-    width: '100%',
+  map: {
     height: Layout.window.height / 5,
     marginBottom: Layout.spacing,
   },
