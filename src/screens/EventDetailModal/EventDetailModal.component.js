@@ -9,55 +9,57 @@ import Tile from '../../components/Tile/Tile';
 import Button from '../../components/Button/Button';
 import {DATE_RANGE} from '../../constants/DateFormats';
 
-export default ({navigation, event}) => {
-  
-  
-  return (
-    <View style={styles.container}>
-      <View style={styles.subcontainer}>
-        <View style={styles.header}>
-          <View style={styles.descriptionContainer}>
-            <Image style={styles.roundCircle} cache source={event.author.picture ? {uri: event.author.picture, cache: 'force-cache'} : Icons.profile} />
-            <View style={styles.description}>
-              <Typography>{event.title}</Typography>
-              <Typography>{event.description}</Typography>
-              <Typography>{event.author.username}</Typography>
-            </View>
-          </View>
-          <Tile title={event.categories[0].title} />
-        </View>
-        <View style={styles.row}>
-          <Typography variant='label'>When?</Typography>
-          <View style={styles.padding}>
-            <Typography >{moment(event.createdAt).format(DATE_RANGE)}</Typography>
+export default ({
+  navigation, event, joinEvent, user,
+}) => (
+  <View style={styles.container}>
+    <View style={styles.subcontainer}>
+      <View style={styles.header}>
+        <View style={styles.descriptionContainer}>
+          <Image style={styles.roundCircle} cache source={event.author.picture ? {uri: event.author.picture, cache: 'force-cache'} : Icons.profile} />
+          <View style={styles.description}>
+            <Typography>{event.title}</Typography>
+            <Typography>{event.description}</Typography>
+            <Typography>{event.author.username}</Typography>
           </View>
         </View>
-        <View style={styles.row}>
-          <Typography variant='label'>Where?</Typography>
-          <View style={styles.padding}>
-            <Typography>{event.address.name}</Typography>
-          </View>
-        </View>
-        <View style={{flex: 1}}>
-          <Typography variant='label'>Participants?</Typography>
-          <FlatList
-            horizontal
-            ItemSeparatorComponent={() => <View style={styles.divider} />}
-            data={event.participants}
-            renderItem={({item}) => {
-              console.log('participants', item)
-              return <Image style={styles.participants} cache source={{uri: item.picture}} />
-            }}
-            keyExtractor={(item, index) => index.toString()}
-          />
-        </View>
-        <View style={styles.paddingVertical}>
-          <Button gradient label='JOIN' />
+        <Tile title={event.categories[0].title} />
+      </View>
+      <View style={styles.row}>
+        <Typography variant='label'>When?</Typography>
+        <View style={styles.padding}>
+          <Typography >{moment(event.createdAt).format(DATE_RANGE)}</Typography>
         </View>
       </View>
+      <View style={styles.row}>
+        <Typography variant='label'>Where?</Typography>
+        <View style={styles.padding}>
+          <Typography>{event.address.name}</Typography>
+        </View>
+      </View>
+      <View style={{flex: 1}}>
+        <Typography variant='label'>Participants?</Typography>
+        <FlatList
+          horizontal
+          ItemSeparatorComponent={() => <View style={styles.divider} />}
+          data={event.participants}
+          renderItem={({item}) => {
+            console.log('participants', item)
+            return <Image style={styles.participants} cache source={{uri: item.picture}} />
+          }}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      </View>
+      <View style={styles.paddingVertical}>
+        {
+          event.participants.map((item) => item._id).indexOf(user._id) > 0 ?
+            null :
+            <Button gradient label='JOIN' onPress={() => joinEvent(event._id)} />
+        }
+      </View>
     </View>
-  );
-}
+  </View>
+)
  
 
 const styles = {
@@ -119,10 +121,10 @@ const styles = {
     paddingLeft: Layout.spacing * 3,
   },
   divider: {
-    height: 10, width: 10
+    height: 10, width: 10,
   },
 
   paddingVertical: {
-    paddingVertical: 10
-  }
+    paddingVertical: 10,
+  },
 }

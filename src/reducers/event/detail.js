@@ -5,7 +5,7 @@
  * @Last Modified time: 2018-08-18 14:34:10
  */
 import _ from 'lodash'
-import {SUCCESS, EVENT_DETAIL, CLEAR, SET_EVENT_DETAIL} from '../../constants/Actions';
+import {SUCCESS, EVENT_DETAIL, CLEAR, SET_EVENT_DETAIL, SET_PARTICIPANT} from '../../constants/Actions';
 
 import EventEntity from '../../entity/Event.entity';
 import {createSelector} from '../../../node_modules/reselect';
@@ -24,7 +24,7 @@ export default (state = INITIAL_STATE, action) => {
   if (type === SET_EVENT_DETAIL) {
     return EventEntity.map(payload)
   }
-  if (name !== EVENT_DETAIL) {
+  if (name !== SET_PARTICIPANT) {
     return state
   }
 
@@ -40,7 +40,7 @@ export default (state = INITIAL_STATE, action) => {
   }
 }
 
-export const eventDetailSelector = (state) => state.event.detail[id]
+export const eventDetailSelector = (state) => state.event.detail
 
 export const eventDetailFormattedSelector = (id) => createSelector(
   eventDetailSelector(id),
