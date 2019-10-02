@@ -15,7 +15,7 @@ import moment from 'moment';
 import _ from 'lodash'
 
 import {categoryArraySelector} from '../../reducers/category';
-import {createEvent} from '../../actions/event';
+import {createEvent, getAllNearEvents} from '../../actions/event';
 import {formatEventForSubmission} from '../../helpers/formatEventHelper';
 import {locationSelector} from '../../reducers/location';
 import NewEventComponent from './NewEvent.component'
@@ -33,6 +33,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   changeField: bindActionCreators(changeAction, dispatch),
+  getEvents: bindActionCreators(getAllNearEvents, dispatch),
   createNewEvent: bindActionCreators(createEvent, dispatch),
   clear: bindActionCreators(clearFields, dispatch),
 })
@@ -81,8 +82,13 @@ export default compose(
     }),
   }),
   withHandlers({
-    onSubmit: ({createNewEvent, navigation}) => (values) => createNewEvent(formatEventForSubmission(values))
-      .then(() => navigation.replace({routeName: 'EventSuccess'}))
+    onSubmit: ({
+      createNewEvent, navigation, getEvents, location,
+    }) => (values) => createNewEvent(formatEventForSubmission(values))
+      .then(() => {
+        getEvents({latitude: location.coords.latitude, longitude: location.coords.longitude, maxDistance: 30})
+        navigation.replace({routeName: 'EventSuccess'})
+      })
       .catch((err) => {
         const errorData = err || {}
         if (errorData.message === 'validation error') {

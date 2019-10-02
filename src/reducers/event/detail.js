@@ -5,7 +5,7 @@
  * @Last Modified time: 2018-08-18 14:34:10
  */
 import _ from 'lodash'
-import {SUCCESS, EVENT_DETAIL, CLEAR, SET_EVENT_DETAIL, SET_PARTICIPANT} from '../../constants/Actions';
+import {SUCCESS, CLEAR, SET_EVENT_DETAIL, SET_PARTICIPANT} from '../../constants/Actions';
 
 import EventEntity from '../../entity/Event.entity';
 import {createSelector} from '../../../node_modules/reselect';
@@ -42,8 +42,8 @@ export default (state = INITIAL_STATE, action) => {
 
 export const eventDetailSelector = (state) => state.event.detail
 
-export const eventDetailFormattedSelector = (id) => createSelector(
-  eventDetailSelector(id),
+export const eventDetailFormattedSelector = createSelector(
+  eventDetailSelector,
   (event) => {
     if (_.isEmpty(event)) {
       return event
@@ -52,8 +52,8 @@ export const eventDetailFormattedSelector = (id) => createSelector(
   },
 )
 
-export const isEventOwnerSelector = (id) => createSelector(
-  eventDetailSelector(id),
+export const isEventOwnerSelector = createSelector(
+  eventDetailSelector,
   profileSelector,
   (event, profile) => {
     if (event && profile) {
@@ -65,8 +65,8 @@ export const isEventOwnerSelector = (id) => createSelector(
 )
 
 
-export const eventFormatForUpdate = (id) => createSelector(
-  eventDetailSelector(id),
+export const eventFormatForUpdate = createSelector(
+  eventDetailSelector,
   (event) => {
     if (_.isEmpty(event)) {
       return event

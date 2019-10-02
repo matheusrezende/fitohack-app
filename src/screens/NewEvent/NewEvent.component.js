@@ -8,6 +8,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 import {View, Platform, ScrollView} from 'react-native'
 import {reduxForm, Field} from 'redux-form'
 import React from 'react'
+import moment from 'moment';
 
 import {TIME_FORMAT} from '../../constants/DateFormats';
 import {TextInput, Typography} from '../../components';
@@ -24,7 +25,6 @@ import Layout from '../../constants/Layout';
 import MapComponent from '../../components/MapComponent/Map.component';
 import SubmitEventButtonContainer from
   '../../components/SubmitEventButton/SubmitEventButton.container';
-import moment from 'moment';
 
 const NewEventComponent = ({
   openModal,
@@ -33,12 +33,9 @@ const NewEventComponent = ({
   resetField,
   getLocationFromMap,
   formLatitude,
-  showStarting,
-  showEnding,
+  
   navigation,
-  showStartingTimePicker,
-  onLocationSelect,
-  showEndingTimePicker,
+  
   formLongitude,
   changeField,
 }) => (
@@ -58,7 +55,7 @@ const NewEventComponent = ({
           rightButton={
             <SubmitEventButtonContainer />
           }
-          title={<Typography variant='drawer'>Event erstellen</Typography>}
+          title={<Typography variant='drawer'>Create Event</Typography>}
         />
     }
 
@@ -146,7 +143,7 @@ const NewEventComponent = ({
                 dateFormat={TIME_FORMAT}
                 errorIcon='warning'
                 iconSource={Icons.clock}
-                input={{ value: moment().add(2, 'hours') }}
+                input={{value: moment().add(2, 'hours')}}
                 component={DatePicker}
               />
             </View>
@@ -197,7 +194,7 @@ const styles = {
   },
   field: {
     color: Colors.textColor,
-  }
+  },
 }
 
 

@@ -6,26 +6,31 @@
  */
 import React from 'react'
 import {withNavigation} from 'react-navigation'
+import {LinearGradient} from 'expo-linear-gradient';
 import {compose, withHandlers} from 'recompose'
 import {View, TouchableOpacity, ImageBackground} from 'react-native'
 import Colors from '../../constants/Colors';
-import {LinearGradient} from 'expo-linear-gradient';
 
-const Tile = ({picture, onPress, setSelected, selected, navigate, icon, tyleStyle = {}}) => (
-  <View style={{...styles.tile, ...tyleStyle}}>
-    <TouchableOpacity style={styles.touchableOpacity} onPress={setSelected ? onPress : navigate}>
-      <LinearGradient
-        colors={Colors.gradient}
-        start={[0.5, 0]}
-        end={[0.5, 1]}
-        style={{ ...styles.overlay, ...(selected ? styles.selected : {}) }}
-      />
-      <View style={styles.imageWrapper}>
-        <ImageBackground resizeMode='cover' style={styles.imageStyle} source={icon ? icon : {uri: picture, cache: 'force-cache'}} />
-      </View>
-    </TouchableOpacity>
-  </View>
-)
+const Tile = ({
+  picture, onPress, setSelected, selected, navigate, icon, tyleStyle = {}, shouldNavigate = true,
+}) => {
+  console.log(icon)
+  return (
+    <View style={{...styles.tile, ...tyleStyle}}>
+      <TouchableOpacity style={styles.touchableOpacity} onPress={setSelected ? onPress : (!shouldNavigate ? null : navigate)}>
+        <LinearGradient
+          colors={Colors.gradient}
+          start={[0.5, 0]}
+          end={[0.5, 1]}
+          style={{...styles.overlay, ...(selected ? styles.selected : {})}}
+        />
+        <View style={styles.imageWrapper}>
+          <ImageBackground resizeMode='cover' style={styles.imageStyle} source={icon || {uri: picture, cache: 'force-cache'}} />
+        </View>
+      </TouchableOpacity>
+    </View>
+  )
+}
 
 const styles = {
   touchableOpacity: {

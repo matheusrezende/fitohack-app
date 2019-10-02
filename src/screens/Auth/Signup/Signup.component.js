@@ -84,7 +84,7 @@ const SignupComponent = ({
 const styles = StyleSheet.create({
   contentContainerStyle: {
     alignItems: 'center',
-    backgroundColor: Colors.whiteBackground,
+    backgroundColor: Colors.grayBackground,
     padding: Layout.spacing * 2,
     minHeight: Layout.window.height,
   },

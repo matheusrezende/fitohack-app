@@ -63,7 +63,7 @@ const LoginComponent = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.whiteBackground,
+    backgroundColor: Colors.grayBackground,
     padding: Layout.spacing * 2,
   },
   contentContainerStyle: {

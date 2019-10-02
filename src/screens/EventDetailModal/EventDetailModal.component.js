@@ -8,58 +8,77 @@ import Typography from '../../components/Typography/Typography';
 import Tile from '../../components/Tile/Tile';
 import Button from '../../components/Button/Button';
 import {DATE_RANGE} from '../../constants/DateFormats';
+import cycling from '../../assets/categories/cycling.png';
+import run from '../../assets/categories/run.png';
+import skating from '../../assets/categories/skate.png';
+import team_sport from '../../assets/categories/team_sport.png';
+import workout from '../../assets/categories/workout.png';
+import yoga from '../../assets/categories/yoga.png';
+
+const images = {
+  cycling,
+  skating,
+  'team\ sport': team_sport,
+  workout,
+  yoga,
+  run,
+};
 
 export default ({
-  navigation, event, joinEvent, user,
-}) => (
-  <View style={styles.container}>
-    <View style={styles.subcontainer}>
-      <View style={styles.header}>
-        <View style={styles.descriptionContainer}>
-          <Image style={styles.roundCircle} cache source={event.author.picture ? {uri: event.author.picture, cache: 'force-cache'} : Icons.profile} />
-          <View style={styles.description}>
-            <Typography>{event.title}</Typography>
-            <Typography>{event.description}</Typography>
-            <Typography>{event.author.username}</Typography>
+  event, joinEvent, user,
+}) => {
+  console.log(user, user._id)
+  console.log(event.participants.map((item) => item._id))
+  return (
+    <View style={styles.container}>
+      <View style={styles.subcontainer}>
+        <View style={styles.header}>
+          <View style={styles.descriptionContainer}>
+            <Image style={styles.roundCircle} cache source={event.author.picture ? {uri: event.author.picture, cache: 'force-cache'} : Icons.profile} />
+            <View style={styles.description}>
+              <Typography>{event.title}</Typography>
+              <Typography>{event.description}</Typography>
+              <Typography>{event.author.username}</Typography>
+            </View>
+          </View>
+          <Tile shouldNavigatew tileStyle={{height: 50, width: 50}} title={event.categories[0].title} icon={images[event.categories[0].title.toLowerCase()]} />
+        </View>
+        <View style={styles.row}>
+          <Typography variant='label'>When?</Typography>
+          <View style={styles.padding}>
+            <Typography >{moment(event.createdAt).format(DATE_RANGE)}</Typography>
           </View>
         </View>
-        <Tile title={event.categories[0].title} />
-      </View>
-      <View style={styles.row}>
-        <Typography variant='label'>When?</Typography>
-        <View style={styles.padding}>
-          <Typography >{moment(event.createdAt).format(DATE_RANGE)}</Typography>
+        <View style={styles.row}>
+          <Typography variant='label'>Where?</Typography>
+          <View style={styles.padding}>
+            <Typography>{event.address.name}</Typography>
+          </View>
         </View>
-      </View>
-      <View style={styles.row}>
-        <Typography variant='label'>Where?</Typography>
-        <View style={styles.padding}>
-          <Typography>{event.address.name}</Typography>
+        <View style={{flex: 1}}>
+          <Typography variant='label'>Participants?</Typography>
+          <FlatList
+            horizontal
+            ItemSeparatorComponent={() => <View style={styles.divider} />}
+            data={event.participants}
+            renderItem={({item}) => {
+              console.log('participants', item)
+              return <Image style={styles.participants} cache source={{uri: item.picture}} />
+            }}
+            keyExtractor={(item, index) => index.toString()}
+          />
         </View>
-      </View>
-      <View style={{flex: 1}}>
-        <Typography variant='label'>Participants?</Typography>
-        <FlatList
-          horizontal
-          ItemSeparatorComponent={() => <View style={styles.divider} />}
-          data={event.participants}
-          renderItem={({item}) => {
-            console.log('participants', item)
-            return <Image style={styles.participants} cache source={{uri: item.picture}} />
-          }}
-          keyExtractor={(item, index) => index.toString()}
-        />
-      </View>
-      <View style={styles.paddingVertical}>
-        {
-          event.participants.map((item) => item._id).indexOf(user._id) > 0 ?
-            null :
-            <Button gradient label='JOIN' onPress={() => joinEvent(event._id)} />
-        }
+        <View style={styles.paddingVertical}>
+          {
+            event.author._id === user._id || event.participants.map((item) => item._id).includes(user._id) ?
+              null :
+              <Button gradient label='JOIN' onPress={() => joinEvent(event._id)} />
+          }
+        </View>
       </View>
     </View>
-  </View>
-)
+  )
+}
  
 
 const styles = {

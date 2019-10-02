@@ -21,12 +21,10 @@ const images = {
   run,
 };
 
-const addImageToCategories = (categories) => {
-  return categories.map(category => ({
-    ...category,
-    icon: images[category.title.toLowerCase()],
-  }));
-};
+const addImageToCategories = (categories) => categories.map((category) => ({
+  ...category,
+  icon: images[category.title.toLowerCase()],
+}));
 
 const mapStateToProps = (state) => ({
   categories: addImageToCategories(categoryArraySelector(state)),

@@ -11,11 +11,11 @@ export default createStackNavigator({
 }, {
   navigationOptions: {
     headerStyle: {
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grayBackground,
       elevation: 0,
       borderBottomWidth: 0,
       
     },
-    headerTintColor: '#000000',
+    
   },
 })

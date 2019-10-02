@@ -17,9 +17,9 @@ import {profileSelector} from '../../../reducers/user/profile';
 const OPTIONS = ['Change Password', 'Delete Account', 'Cancel']
 
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   profile: profileSelector(state),
-  event: eventDetailSelector(ownProps.eventId)(state),
+  event: eventDetailSelector(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({
