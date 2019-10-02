@@ -2,10 +2,10 @@ import React from 'react'
 import {View} from 'react-native'
 import Tile from '../Tile/Tile';
 
-const TilePicker = ({options, setSelected, isSelected}) => (
+const TilePicker = ({options, setSelected, isSelected, tyleStyle = {}}) => (
   <View style={styles.tilesContainer}>
     {options.map((item, index) => (
-      <Tile key={index} setSelected={setSelected} selected={isSelected && isSelected(item)} {...item} />
+      <Tile key={index} setSelected={setSelected} selected={isSelected && isSelected(item)} tyleStyle={tyleStyle} {...item} />
     ))}
   </View>
 )

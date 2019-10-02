@@ -11,8 +11,8 @@ import {View, TouchableOpacity, ImageBackground} from 'react-native'
 import Colors from '../../constants/Colors';
 import {LinearGradient} from 'expo-linear-gradient';
 
-const Tile = ({picture, onPress, setSelected, selected, navigate, icon}) => (
-  <View style={styles.tile}>
+const Tile = ({picture, onPress, setSelected, selected, navigate, icon, tyleStyle = {}}) => (
+  <View style={{...styles.tile, ...tyleStyle}}>
     <TouchableOpacity style={styles.touchableOpacity} onPress={setSelected ? onPress : navigate}>
       <LinearGradient
         colors={Colors.gradient}
