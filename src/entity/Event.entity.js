@@ -15,6 +15,7 @@ const mapper = {
   favorite: 'favorite',
   favoriteCount: 'favoriteCount',
   beginning: 'beginning',
+  participants: 'participants',
 }
 
 export default new Model(mapper)

@@ -75,15 +75,8 @@ const Profile = ({
         </View>
         <View style={styles.dataContainer}>
           <ProfileDataRow label='Username' value={`@${username}`} />
-          <ProfileDataRow label='Verified' value={verified ? 'Yes' : 'No'} />
-          <ProfileDataRow label='Number of Events Favorited' value={numberOfFavorites} />
           <ProfileDataRow label='Email' value={email} />
           <ProfileDataRow label='Password' value='********' />
-        </View>
-        {!verified && <Button label='Verify Account' gradient fullWidth onPress={verifyAccount} />}
-        <View style={styles.spinnerContainer}>
-          {verifyLoading && <Spinner />}
-          {!verified && verifySuccess && <Typography variant='caption' textAlign='center'>An email was sent to your inbox in order to verify your account.</Typography>}
         </View>
       </View>
     </ScrollView>
